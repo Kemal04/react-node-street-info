@@ -1,0 +1,157 @@
+.home-bg-fixed {
+    background: linear-gradient(rgba(28, 36, 58, 0.7), rgba(28, 36, 58, 0.7)), url('../../../assets/banners/newbanner.jpg');
+    height: 650px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.link-underline {
+    text-decoration: none !important;
+}
+
+.link-underline:hover {
+    text-decoration: underline !important;
+}
+
+.btn-primary {
+    background: #28A745 !important;
+    color: #fff !important;
+    border-radius: 22px !important;
+    padding: 7px 30px !important;
+    border: none !important;
+    font-weight: 500 !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #27b648;
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.btn-primary:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #28A745;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    color: #fff;
+}
+
+.btn-primary:hover:before {
+    width: 100%;
+}
+
+.btn-secondary {
+    background: #192440 !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    border-radius: 22px !important;
+    padding: 8px 30px !important;
+    border: none !important;
+    font-weight: 500 !important;
+}
+
+.feature-first {
+    background: linear-gradient(169deg, #ffffff 55%, #32cb55 0) !important;
+}
+
+.feature-last {
+    background-color: #32cb55 !important;
+}
+
+.label {
+    display: inline-block;
+    background-color: white;
+    font-family: sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px dashed #AAAAAA;
+    stroke-dashoffset: 10px;
+    height: 200px !important;
+}
+
+.banner-header {
+    font-size: 50px;
+    line-height: 80px;
+}
+
+.position-lg-fixed {
+    position: fixed!important;
+    width: 25%;
+}
+
+.h-lg-500 {
+    height: 100vh;
+}
+
+.border-green {
+    border: 1px solid #28A745 !important;
+}
+
+@media screen and (min-device-width: 280px) and (max-device-width: 747px) {
+    .banner-header {
+        text-align: center;
+        font-size: 30px;
+        line-height: 50px;
+    }
+
+    .h-lg-500 {
+        height: auto;
+    }
+
+    .position-lg-fixed {
+        position: static !important;
+        width: 100%!important;
+        height: 100%!important;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .back-to-top {
+        right: 20px !important;
+    }
+}
+
+.fw-black {
+    font-weight: 500 !important;
+}
+
+.fs-12 {
+    font-size: 12px !important;
+}
+
+.fs-18 {
+    font-size: 18px !important;
+}
+
+.fs-17 {
+    font-size: 17px !important;
+}
+
+.fs-15 {
+    font-size: 15px !important;
+}
+
+.fs-13 {
+    font-size: 13px !important;
+}
