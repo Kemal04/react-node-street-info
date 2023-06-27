@@ -46,6 +46,7 @@ const News = () => {
     return (
         <>
             <div className='container my-5 py-5'>
+                <div className="text-center fw-bold my-5 display-5">Täzelikler</div>
                 <div className='row g-5'>
                     <div className='col-xl-8'>
                         <div className='row'>
@@ -72,21 +73,8 @@ const News = () => {
                         </div>
                     </div>
                     <div className='col-xl-4 px-3'>
-                        <form className="d-flex" role="search">
-                            <input className="form-control rounded-0 rounded-start border-0 bg-light py-3 " type="search" placeholder="Gozle..." aria-label="Gozle..." />
-                            <button className="btn bg-green rounded-0 rounded-end px-3" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
-                        </form>
 
-                        <div className='mt-5'>
-                            <div className='h4 text-green border-bottom pb-3'>Kategoriyalar</div>
-                            <ul className="mt-3 fs-17 text-secondary fw-black">
-                                <li className='list-group-item mb-3'>Ählisi</li>
-                                <li className='list-group-item mb-3'>Dünýä täzelikleri (44)</li>
-                                <li className='list-group-item mb-3'>Tehnologiýalar (27)</li>
-                            </ul>
-                        </div>
-
-                        <div className='mt-5'>
+                        <div>
                             <div className='h4 text-green border-bottom pb-3'>Meşhur täzelikler</div>
                             <div>
                                 {

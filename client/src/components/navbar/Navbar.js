@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import tm from '../../assets/icons/tm.png'
+import en from '../../assets/icons/en.png'
+import ru from '../../assets/icons/ru.png'
 
 const Navbar = () => {
     return (
@@ -22,8 +24,8 @@ const Navbar = () => {
                                 <NavLink to="/seyilgahler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Seýilgähler</NavLink>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link style={{ fontSize: "18px", letterSpacing: "0.6px" }} className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Şahyrlar
+                                <Link style={{ fontSize: "18px", letterSpacing: "0.6px" }} className="nav-link dropdown-toggle mx-3" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Meşhur Şahslar
                                 </Link>
                                 <ul className="dropdown-menu">
                                     <li><NavLink to="/şahyrlar" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Şahyrlar</NavLink></li>
@@ -40,12 +42,13 @@ const Navbar = () => {
                                 <NavLink to="/tazelikler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Täzelikler</NavLink>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link to='/' className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link to='/' className="nav-link dropdown-toggle mx-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src={tm} alt="" className='img-fluid' style={{ width: "30px" }} />
                                 </Link>
                                 <ul className="dropdown-menu text-center">
                                     <li><Link to='/' className="dropdown-item"><img src={tm} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
-                                    <li><Link to='/' className="dropdown-item"><img src={tm} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
+                                    <li><Link to='/' className="dropdown-item"><img src={en} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
+                                    <li><Link to='/' className="dropdown-item"><img src={ru} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
                                 </ul>
                             </li>
                         </ul>
