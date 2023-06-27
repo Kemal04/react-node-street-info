@@ -3,8 +3,18 @@ import { Link, NavLink } from 'react-router-dom'
 import tm from '../../assets/icons/tm.png'
 import en from '../../assets/icons/en.png'
 import ru from '../../assets/icons/ru.png'
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+
+    const { t, i18n } = useTranslation();
+
+    //Creating a method to change the language onChnage from select box
+    const changeLanguageHandler = (e) => {
+        const languageValue = e.target.value
+        i18n.changeLanguage(languageValue);
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg fixed-top bg-light shadow" style={{ backgroundColor: "transparent" }}>
@@ -25,7 +35,7 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item dropdown">
                                 <Link style={{ fontSize: "18px", letterSpacing: "0.6px" }} className="nav-link dropdown-toggle mx-3" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   Meşhur Şahslar
+                                    Meşhur şahslar
                                 </Link>
                                 <ul className="dropdown-menu">
                                     <li><NavLink to="/şahyrlar" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Şahyrlar</NavLink></li>
@@ -41,16 +51,21 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <NavLink to="/tazelikler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Täzelikler</NavLink>
                             </li>
-                            <li className="nav-item dropdown">
+                            {/* <li className="nav-item dropdown">
                                 <Link to='/' className="nav-link dropdown-toggle mx-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src={tm} alt="" className='img-fluid' style={{ width: "30px" }} />
+                                    
                                 </Link>
                                 <ul className="dropdown-menu text-center">
                                     <li><Link to='/' className="dropdown-item"><img src={tm} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
                                     <li><Link to='/' className="dropdown-item"><img src={en} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
                                     <li><Link to='/' className="dropdown-item"><img src={ru} alt="" className='img-fluid' style={{ width: "30px" }} /></Link></li>
                                 </ul>
-                            </li>
+                            </li> */}
+                            <select className="form-select border-0 bg-light" aria-label="Default select example" onChange={changeLanguageHandler}>
+                                <option value="tm">TM</option>
+                                <option value="en">EN</option>
+                                <option value="ru">RU</option>
+                            </select>
                         </ul>
                     </div>
                 </div>

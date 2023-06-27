@@ -24,9 +24,9 @@ const StreetRead = () => {
             <div className='container py-5'>
                 <div className='row justify-content-between'>
                     <div className='col-xl-6 col-lg-6 col-md-6 col-12 mt-5 h-lg-500'>
-                        <div className='position-lg-fixed'>
-                            <img src={street.street_img === undefined ? "" : `${Api_Address}/img/street/${street.street_img}`} alt="" className='img-fluid' />
-                            <div className='text-center mt-4'>
+                        <div className='position-lg-fixed text-center'>
+                            <img src={street.street_img === undefined ? "" : `${Api_Address}/img/street/${street.street_img}`} alt="" className='w-75' />
+                            <div className='mt-4'>
                                 <img src={street.street_qr === undefined ? "" : `${Api_Address}/img/street_qr/${street.street_qr}`} alt="" style={{ width: "200px" }} />
                             </div>
                         </div>

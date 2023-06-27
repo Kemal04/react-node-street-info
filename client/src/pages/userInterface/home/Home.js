@@ -15,6 +15,7 @@ import icon_3 from '../../../assets/icons/car.svg'
 import icon_4 from '../../../assets/icons/e-gov-tm.svg'
 import moment from "moment";
 import ScrollButton from "../../../components/scroll/ScrollButton";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
 
@@ -89,6 +90,8 @@ const Home = () => {
         fetchData()
     }, [page])
 
+    const { t } = useTranslation();
+
     return (
         <>
             <ScrollButton />
@@ -97,9 +100,7 @@ const Home = () => {
                     <div className='row w-75 align-items-center mb-5 pb-5'>
                         <div className='col-xl-12 col-12 mt-5'>
                             <div className='banner-header text-white fw-bold' data-aos={"fade-up"}>
-                                ARKADAG ŞÄHERI –
-                                <br />
-                                – BAKY BAGTYÝARLYGYŇ ŞÄHERI
+                                {t('bannerTitle')}
                             </div>
                         </div>
                         <div className='col-xl-12 mt-5 d-xl-block d-lg-block d-md-block d-none'>

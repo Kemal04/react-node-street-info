@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Api_Address from '../../../env';
 import { toast } from 'react-toastify';
-import moment from 'moment';
 
 const BlogRead = () => {
 

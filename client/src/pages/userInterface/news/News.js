@@ -1,4 +1,4 @@
-import { faCalendarAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import moment from 'moment'
