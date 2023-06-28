@@ -30,5 +30,10 @@
     "artists": "Artists",
     "historicalFigures": "Historical figures",
     "scientificStaff": "Scientific staff",
-    "streetTitle": "People whose names are plastered on the streets of Arkadag"
+    "streetTitle": "People whose names are plastered on the streets of Arkadag",
+    "parkTitle": "Historical and cultural parks",
+    "poetTitle": "Poets and Writers",
+    "artistTitle": "Musicians, artists, athletes",
+    "historicalTitle": "Historical figures and others",
+    "staffTitle": "Scientific staff"
 }

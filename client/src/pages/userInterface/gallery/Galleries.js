@@ -28,13 +28,16 @@ import hor_12 from '../../../assets/gallery/horizontal/12.jpg'
 
 import { SlideshowLightbox } from 'lightbox.js-react'
 import 'lightbox.js-react/dist/index.css'
+import { useTranslation } from 'react-i18next'
 
 const Galleries = () => {
+
+    const { t } = useTranslation();
 
     return (
         <>
             <div className='container my-5 py-5'>
-                <div className="text-center fw-bold my-5 display-5">Galereýa</div>
+                <div className="text-center fw-bold my-5 display-5">{t('gallery')}</div>
                 <div className="row g-3">
                     <div className='col-xl-3'>
                         <SlideshowLightbox showThumbnails>

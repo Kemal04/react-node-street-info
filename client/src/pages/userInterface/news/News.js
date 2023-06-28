@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import ReactPaginate from 'react-paginate'
 import { Link } from 'react-router-dom'
 
 const News = () => {
+
+    const { t } = useTranslation();
 
     const [news, setNews] = useState([])
 
@@ -46,7 +50,7 @@ const News = () => {
     return (
         <>
             <div className='container my-5 py-5'>
-                <div className="text-center fw-bold my-5 display-5">Täzelikler</div>
+                <div className="text-center fw-bold my-5 display-5">{t('news')}</div>
                 <div className='row g-5'>
                     <div className='col-xl-8'>
                         <div className='row'>
@@ -70,6 +74,27 @@ const News = () => {
                                     </Link>
                                 ))
                             }
+                            <nav className='col-xl-12 d-flex justify-content-center mt-5'>
+                                {
+                                    pages === 1
+                                        ?
+                                        null
+                                        :
+                                        <ReactPaginate
+                                            previousLabel="Yza"
+                                            nextLabel="Öňe"
+                                            pageCount={pages}
+                                            onPageChange={changePage}
+                                            containerClassName={"pagination"}
+                                            pageLinkClassName={"page-link text-success"}
+                                            breakClassName={'page-link text-success'}
+                                            previousLinkClassName={"page-link text-success"}
+                                            nextLinkClassName={"page-link text-success"}
+                                            activeLinkClassName={"page-link active bg-green border-green text-white"}
+                                            disabledLinkClassName={"page-link disabled"}
+                                        />
+                                }
+                            </nav>
                         </div>
                     </div>
                     <div className='col-xl-4 px-3'>
