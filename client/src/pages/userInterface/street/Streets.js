@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import Api_Address from '../../../env';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import { useTranslation } from 'react-i18next';
 
 const Streets = () => {
+    const { t } = useTranslation();
 
     const [streets, setStreets] = useState([])
 
@@ -38,7 +40,7 @@ const Streets = () => {
     return (
         <>
             <div className='container py-5'>
-                <div className="text-center fw-bold my-5 display-5">Arkadag şäheriniň şaýollaryna atlary dakylan şahyslar</div>
+                <div className="text-center fw-bold my-5 display-5">{t('streetTitle')}</div>
                 <div className='row'>
                     {
                         streets.map((street, index) => (

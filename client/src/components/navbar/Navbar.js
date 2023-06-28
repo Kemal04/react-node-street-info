@@ -1,8 +1,5 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import tm from '../../assets/icons/tm.png'
-import en from '../../assets/icons/en.png'
-import ru from '../../assets/icons/ru.png'
 import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
@@ -20,7 +17,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg fixed-top bg-light shadow" style={{ backgroundColor: "transparent" }}>
                 <div className="container w-50">
                     <NavLink className="navbar-brand" to="/">
-                        Baş Sahypa
+                        {t('home')}
                     </NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -28,28 +25,28 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <NavLink to="/sayollar" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Şaýollar</NavLink>
+                                <NavLink to="/sayollar" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('streets')}</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/seyilgahler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Seýilgähler</NavLink>
+                                <NavLink to="/seyilgahler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('parks')}</NavLink>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link style={{ fontSize: "18px", letterSpacing: "0.6px" }} className="nav-link dropdown-toggle mx-3" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Meşhur şahslar
+                                    {t('famousPeople')}
                                 </Link>
                                 <ul className="dropdown-menu">
-                                    <li><NavLink to="/şahyrlar" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Şahyrlar</NavLink></li>
-                                    <li><NavLink to="/artistler" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Artistler</NavLink></li>
-                                    <li><NavLink to="/taryhy-sahslar" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Taryhy şahslar</NavLink></li>
+                                    <li><NavLink to="/şahyrlar" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('poets')}</NavLink></li>
+                                    <li><NavLink to="/artistler" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('artists')}</NavLink></li>
+                                    <li><NavLink to="/taryhy-sahslar" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('historicalFigures')}</NavLink></li>
                                     <li><hr className="dropdown-divider" /></li>
-                                    <li><NavLink to="/ylmy-isgarler" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Ylmy işgärler</NavLink></li>
+                                    <li><NavLink to="/ylmy-isgarler" className='nav-link link-underline mx-2' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('scientificStaff')}</NavLink></li>
                                 </ul>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/galereya" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Galereýa</NavLink>
+                                <NavLink to="/galereya" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('gallery')}</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/tazelikler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>Täzelikler</NavLink>
+                                <NavLink to="/tazelikler" className='nav-link link-underline mx-3' style={{ fontSize: "18px", letterSpacing: "0.6px" }}>{t('news')}</NavLink>
                             </li>
                             {/* <li className="nav-item dropdown">
                                 <Link to='/' className="nav-link dropdown-toggle mx-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
