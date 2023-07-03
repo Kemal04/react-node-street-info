@@ -44,6 +44,12 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
         title: req.body.title,
         name: req.body.name,
         description: req.body.description,
+        name_en: req.body.name_en,
+        name_ru: req.body.name_ru,
+        title_en: req.body.title_en,
+        description_en: req.body.description_en,
+        title_ru: req.body.title_ru,
+        description_ru: req.body.description_ru,
         building_img: req.files.building_img[0].filename
     }).then(() => {
         res.json({
@@ -80,6 +86,12 @@ router.post("/edit/:buildingId", isAdmin, fileUpload.upload, async (req, res) =>
             title: req.body.title,
             name: req.body.name,
             description: req.body.description,
+            name_en: req.body.name_en,
+            name_ru: req.body.name_ru,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             building_img: img,
             building_qr: qr
         },
@@ -100,6 +112,12 @@ router.post("/edit/:buildingId", isAdmin, fileUpload.upload, async (req, res) =>
             title: req.body.title,
             name: req.body.name,
             description: req.body.description,
+            name_en: req.body.name_en,
+            name_ru: req.body.name_ru,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             building_img: img
         },
             { where: { id: req.params.buildingId } })
@@ -118,6 +136,12 @@ router.post("/edit/:buildingId", isAdmin, fileUpload.upload, async (req, res) =>
             title: req.body.title,
             name: req.body.name,
             description: req.body.description,
+            name_en: req.body.name_en,
+            name_ru: req.body.name_ru,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             building_qr: qr
         },
             { where: { id: req.params.buildingId } })
@@ -130,7 +154,13 @@ router.post("/edit/:buildingId", isAdmin, fileUpload.upload, async (req, res) =>
         await Building.update({
             title: req.body.title,
             name: req.body.name,
-            description: req.body.description
+            description: req.body.description,
+            name_en: req.body.name_en,
+            name_ru: req.body.name_ru,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
         },
             { where: { id: req.params.buildingId } })
             .then(() => {

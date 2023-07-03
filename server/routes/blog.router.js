@@ -41,6 +41,10 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
     await Blog.create({
         title: req.body.title,
         description: req.body.description,
+        title_en: req.body.title,
+        description_en: req.body.description,
+        title_ru: req.body.title,
+        description_ru: req.body.description,
         blog_img: req.files.blog_img[0].filename
     }).then(() => {
         res.json({
@@ -76,6 +80,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title,
+            description_en: req.body.description,
+            title_ru: req.body.title,
+            description_ru: req.body.description,
             blog_img: img,
             blog_qr: qr
         },
@@ -95,6 +103,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title,
+            description_en: req.body.description,
+            title_ru: req.body.title,
+            description_ru: req.body.description,
             blog_img: img
         },
             { where: { id: req.params.blogId } })
@@ -112,6 +124,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title,
+            description_en: req.body.description,
+            title_ru: req.body.title,
+            description_ru: req.body.description,
             blog_qr: qr
         },
             { where: { id: req.params.blogId } })
@@ -123,7 +139,11 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
     } else {
         await Blog.update({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            title_en: req.body.title,
+            description_en: req.body.description,
+            title_ru: req.body.title,
+            description_ru: req.body.description,
         },
             { where: { id: req.params.blogId } })
             .then(() => {

@@ -23,6 +23,10 @@ const Street = sequelize.define("street", {
     },
     title: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
+    title_en: { type: DataTypes.STRING, allowNull: false },
+    description_en: { type: DataTypes.TEXT, allowNull: false },
+    title_ru: { type: DataTypes.STRING, allowNull: false },
+    description_ru: { type: DataTypes.TEXT, allowNull: false },
     street_img: { type: DataTypes.STRING, allowNull: false },
     street_qr: { type: DataTypes.STRING, allowNull: true }
 });
@@ -36,7 +40,13 @@ const Building = sequelize.define("building", {
     },
     title: { type: DataTypes.STRING, allowNull: false },
     name: { type: DataTypes.STRING, allowNull: false },
+    name_en: { type: DataTypes.STRING, allowNull: false },
+    name_ru: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
+    title_en: { type: DataTypes.STRING, allowNull: false },
+    description_en: { type: DataTypes.TEXT, allowNull: false },
+    title_ru: { type: DataTypes.STRING, allowNull: false },
+    description_ru: { type: DataTypes.TEXT, allowNull: false },
     building_img: { type: DataTypes.STRING, allowNull: false },
     building_qr: { type: DataTypes.STRING, allowNull: true }
 });
@@ -63,6 +73,10 @@ const Blog = sequelize.define("blog", {
     },
     title: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
+    title_en: { type: DataTypes.STRING, allowNull: false },
+    description_en: { type: DataTypes.TEXT, allowNull: false },
+    title_ru: { type: DataTypes.STRING, allowNull: false },
+    description_ru: { type: DataTypes.TEXT, allowNull: false },
     blog_img: { type: DataTypes.STRING, allowNull: false },
     blog_qr: { type: DataTypes.STRING, allowNull: true }
 });
@@ -76,6 +90,10 @@ const Artist = sequelize.define("artist", {
     },
     title: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
+    title_en: { type: DataTypes.STRING, allowNull: false },
+    description_en: { type: DataTypes.TEXT, allowNull: false },
+    title_ru: { type: DataTypes.STRING, allowNull: false },
+    description_ru: { type: DataTypes.TEXT, allowNull: false },
     artist_img: { type: DataTypes.STRING, allowNull: false },
     artist_qr: { type: DataTypes.STRING, allowNull: true }
 });
@@ -89,6 +107,10 @@ const Individ = sequelize.define("individ", {
     },
     title: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
+    title_en: { type: DataTypes.STRING, allowNull: false },
+    description_en: { type: DataTypes.TEXT, allowNull: false },
+    title_ru: { type: DataTypes.STRING, allowNull: false },
+    description_ru: { type: DataTypes.TEXT, allowNull: false },
     individ_img: { type: DataTypes.STRING, allowNull: false },
     individ_qr: { type: DataTypes.STRING, allowNull: true }
 });
@@ -102,6 +124,10 @@ const Staff = sequelize.define("staff", {
     },
     title: { type: DataTypes.STRING, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
+    title_en: { type: DataTypes.STRING, allowNull: false },
+    description_en: { type: DataTypes.TEXT, allowNull: false },
+    title_ru: { type: DataTypes.STRING, allowNull: false },
+    description_ru: { type: DataTypes.TEXT, allowNull: false },
     staff_img: { type: DataTypes.STRING, allowNull: false },
     staff_qr: { type: DataTypes.STRING, allowNull: true }
 });

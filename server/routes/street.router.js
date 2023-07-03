@@ -55,6 +55,10 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
     await Street.create({
         title: req.body.title,
         description: req.body.description,
+        title_en: req.body.title_en,
+        description_en: req.body.description_en,
+        title_ru: req.body.title_ru,
+        description_ru: req.body.description_ru,
         street_img: req.files.street_img[0].filename,
     }).then(() => {
         res.json({
@@ -90,6 +94,10 @@ router.post("/edit/:streetId", isAdmin, fileUpload.upload, async (req, res) => {
         await Street.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             street_img: img,
             street_qr: qr
         },
@@ -109,6 +117,10 @@ router.post("/edit/:streetId", isAdmin, fileUpload.upload, async (req, res) => {
         await Street.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             street_img: img
         },
             { where: { id: req.params.streetId } })
@@ -126,6 +138,10 @@ router.post("/edit/:streetId", isAdmin, fileUpload.upload, async (req, res) => {
         await Street.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             street_qr: qr
         },
             { where: { id: req.params.streetId } })
@@ -137,7 +153,12 @@ router.post("/edit/:streetId", isAdmin, fileUpload.upload, async (req, res) => {
     } else {
         await Street.update({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
+
         },
             { where: { id: req.params.streetId } })
             .then(() => {

@@ -43,6 +43,10 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
     await Artist.create({
         title: req.body.title,
         description: req.body.description,
+        title_en: req.body.title_en,
+        description_en: req.body.description_en,
+        title_ru: req.body.title_ru,
+        description_ru: req.body.description_ru,
         artist_img: req.files.artist_img[0].filename
     }).then(() => {
         res.json({
@@ -78,6 +82,10 @@ router.post("/edit/:artistId", isAdmin, fileUpload.upload, async (req, res) => {
         await Artist.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             artist_img: img,
             artist_qr: qr
         },
@@ -97,6 +105,10 @@ router.post("/edit/:artistId", isAdmin, fileUpload.upload, async (req, res) => {
         await Artist.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             artist_img: img
         },
             { where: { id: req.params.artistId } })
@@ -114,6 +126,10 @@ router.post("/edit/:artistId", isAdmin, fileUpload.upload, async (req, res) => {
         await Artist.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             artist_qr: qr
         },
             { where: { id: req.params.artistId } })
@@ -125,7 +141,11 @@ router.post("/edit/:artistId", isAdmin, fileUpload.upload, async (req, res) => {
     } else {
         await Artist.update({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
         },
             { where: { id: req.params.artistId } })
             .then(() => {

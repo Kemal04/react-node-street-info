@@ -43,6 +43,10 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
     await Individ.create({
         title: req.body.title,
         description: req.body.description,
+        title_en: req.body.title_en,
+        description_en: req.body.description_en,
+        title_ru: req.body.title_ru,
+        description_ru: req.body.description_ru,
         individ_img: req.files.individ_img[0].filename
     }).then(() => {
         res.json({
@@ -78,6 +82,10 @@ router.post("/edit/:individId",isAdmin, fileUpload.upload, async (req, res) => {
         await Individ.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             individ_img: img,
             individ_qr: qr
         },
@@ -97,6 +105,10 @@ router.post("/edit/:individId",isAdmin, fileUpload.upload, async (req, res) => {
         await Individ.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             individ_img: img
         },
             { where: { id: req.params.individId } })
@@ -114,6 +126,10 @@ router.post("/edit/:individId",isAdmin, fileUpload.upload, async (req, res) => {
         await Individ.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             individ_qr: qr
         },
             { where: { id: req.params.individId } })
@@ -125,7 +141,11 @@ router.post("/edit/:individId",isAdmin, fileUpload.upload, async (req, res) => {
     } else {
         await Individ.update({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
         },
             { where: { id: req.params.individId } })
             .then(() => {

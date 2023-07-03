@@ -43,6 +43,10 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
     await Staff.create({
         title: req.body.title,
         description: req.body.description,
+        title_en: req.body.title_en,
+        description_en: req.body.description_en,
+        title_ru: req.body.title_ru,
+        description_ru: req.body.description_ru,
         staff_img: req.files.staff_img[0].filename
     }).then(() => {
         res.json({
@@ -78,6 +82,10 @@ router.post("/edit/:staffId",isAdmin, fileUpload.upload, async (req, res) => {
         await Staff.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             staff_img: img,
             staff_qr: qr
         },
@@ -97,6 +105,10 @@ router.post("/edit/:staffId",isAdmin, fileUpload.upload, async (req, res) => {
         await Staff.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             staff_img: img
         },
             { where: { id: req.params.staffId } })
@@ -114,6 +126,10 @@ router.post("/edit/:staffId",isAdmin, fileUpload.upload, async (req, res) => {
         await Staff.update({
             title: req.body.title,
             description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             staff_qr: qr
         },
             { where: { id: req.params.staffId } })
@@ -125,7 +141,11 @@ router.post("/edit/:staffId",isAdmin, fileUpload.upload, async (req, res) => {
     } else {
         await Staff.update({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
         },
             { where: { id: req.params.staffId } })
             .then(() => {
