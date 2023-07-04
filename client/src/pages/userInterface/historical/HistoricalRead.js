@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Api_Address from '../../../env';
 import { toast } from 'react-toastify';
+import i18n from "i18next";
 
 const HistoricalRead = () => {
 
     const { historicalId } = useParams()
+    const lang = i18n.language;
 
     const [historical, setHistorical] = useState("")
 
@@ -34,14 +36,17 @@ const HistoricalRead = () => {
                     <div className='col-xl-6 col-lg-6 col-md-6 col-12 mt-5'>
                         <div className='card border-0 rounded-0' style={{ backgroundColor: "transparent", boxShadow: "none" }}>
                             <div className='card-body'>
-                                <div className='card-text h2 mb-3'>{historical.title}</div>
-                                <p dangerouslySetInnerHTML={{ __html: historical.description }}></p>
+                                <div className='card-text h2 mb-3'>{lang === "tm" ? historical.title : lang === "en" ? historical.title_en : lang === "ru" ? historical.title_ru : ""}</div>
+                                <p dangerouslySetInnerHTML={{
+                                    __html:
+                                        lang === "tm" ? historical.description : lang === "en" ? historical.description_en : lang === "ru" ? historical.description_ru : ""
+                                }}></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

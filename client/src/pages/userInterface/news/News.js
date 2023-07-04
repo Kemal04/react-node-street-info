@@ -6,10 +6,12 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactPaginate from 'react-paginate'
 import { Link } from 'react-router-dom'
+import i18n from "i18next";
 
 const News = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     const [news, setNews] = useState([])
 
@@ -62,9 +64,16 @@ const News = () => {
                                                 <img src={'https://tmcell.tm/api/api/compress/news/' + news.news_img} alt="" className='img-fluid h-100 w-100' style={{ objectFit: "cover" }} />
                                             </div>
                                             <div className='card-body pb-5 pt-5 position-relative'>
-                                                <div className='bg-green d-inline p-2 rounded-5 position-absolute small' style={{ top: "-20px" }}>{news.category.name_tm}</div>
-                                                <div className="h5 mb-3 text-green">{news.title_tm}</div>
-                                                <p className='text-dark' style={{ lineHeight: "30px" }} dangerouslySetInnerHTML={{ __html: news.description_tm.substring(0, 150) + "..." }}></p>
+                                                <div className='bg-green d-inline p-2 rounded-5 position-absolute small' style={{ top: "-20px" }}>
+                                                    {lang === "tm" ? news.category.name_tm : lang === "en" ? news.category.name_en : lang === "ru" ? news.category.name_ru : ""}
+                                                </div>
+                                                <div className="h5 mb-3 text-green">
+                                                    {lang === "tm" ? news.title_tm : lang === "en" ? news.title_en : lang === "ru" ? news.title_ru : ""}
+                                                </div>
+                                                <p className='text-dark' style={{ lineHeight: "30px" }} dangerouslySetInnerHTML={{
+                                                    __html:
+                                                        lang === "tm" ? news.description_tm.substring(0, 150) + "..." : lang === "en" ? news.description_en.substring(0, 150) + "..." : lang === "ru" ? news.description_ru.substring(0, 150) + "..." : ""
+                                                }}></p>
                                             </div>
                                             <div className='d-flex align-items-center position-absolute border-top pt-3 small text-dark' style={{ bottom: "20px", left: "25px", width: "86%" }}>
                                                 <FontAwesomeIcon icon={faCalendarAlt} className=' text-green' />

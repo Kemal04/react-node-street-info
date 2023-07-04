@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Api_Address from '../../../env';
 import { toast } from 'react-toastify';
+import i18n from "i18next";
 
 const ScienceRead = () => {
 
     const { scienceId } = useParams()
+    const lang = i18n.language;
 
     const [science, setScience] = useState("")
 
@@ -34,8 +36,11 @@ const ScienceRead = () => {
                     <div className='col-xl-6 col-lg-6 col-md-6 col-12 mt-5'>
                         <div className='card border-0 rounded-0' style={{ backgroundColor: "transparent", boxShadow: "none" }}>
                             <div className='card-body'>
-                                <div className='card-text h2 mb-3'>{science.title}</div>
-                                <p dangerouslySetInnerHTML={{ __html: science.description }}></p>
+                                <div className='card-text h2 mb-3'>{lang === "tm" ? science.title : lang === "en" ? science.title_en : lang === "ru" ? science.title_ru : ""}</div>
+                                <p dangerouslySetInnerHTML={{
+                                    __html:
+                                        lang === "tm" ? science.description : lang === "en" ? science.description_en : lang === "ru" ? science.description_ru : ""
+                                }}></p>
                             </div>
                         </div>
                     </div>

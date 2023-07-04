@@ -37,7 +37,10 @@ const StreetRead = () => {
                         <div className='card border-0 rounded-0' style={{ backgroundColor: "transparent", boxShadow: "none" }}>
                             <div className='card-body'>
                                 <div className='card-text h2 mb-3'>{lang === "tm" ? street.title : lang === "en" ? street.title_en : lang === "ru" ? street.title_ru : ""}</div>
-                                <p dangerouslySetInnerHTML={{ __html: street.description }}></p>
+                                <p dangerouslySetInnerHTML={{
+                                    __html:
+                                        lang === "tm" ? street.description : lang === "en" ? street.description_en : lang === "ru" ? street.description_ru : ""
+                                }}></p>
                             </div>
                         </div>
                     </div>

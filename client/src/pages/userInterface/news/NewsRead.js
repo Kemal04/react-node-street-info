@@ -3,10 +3,12 @@ import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import i18n from "i18next";
 
 const NewsRead = () => {
 
     const { newsId } = useParams()
+    const lang = i18n.language;
 
     const [news, setNews] = useState({})
     const [category, setCategory] = useState({})
@@ -32,7 +34,7 @@ const NewsRead = () => {
                         <div className='d-flex align-items-center '>
                             <div className='border-end pe-3 small'>
                                 Kategoriýa
-                                <div className='text-green fw-black'>{category.name_tm}</div>
+                                <div className='text-green fw-black'>{lang === "tm" ? category.name_tm : lang === "en" ? category.name_en : lang === "ru" ? category.name_ru : ""}</div>
                             </div>
                             <div className='border-end px-3 small'>
                                 Senesi
@@ -44,9 +46,9 @@ const NewsRead = () => {
                             </div>
                         </div>
                         <div className='my-4 h4 text-green'>
-                            {news.title_tm}
+                            {lang === "tm" ? news.title_tm : lang === "en" ? news.title_en : lang === "ru" ? news.title_ru : ""}
                         </div>
-                        <p style={{ textAlign: "justify", lineHeight: "30px" }} dangerouslySetInnerHTML={{ __html: news.description_tm }}></p>
+                        <p style={{ textAlign: "justify", lineHeight: "30px" }} dangerouslySetInnerHTML={{ __html: lang === "tm" ? news.description_tm : lang === "en" ? news.description_en : lang === "ru" ? news.description_ru : "" }}></p>
                     </div>
                 </div>
             </div>

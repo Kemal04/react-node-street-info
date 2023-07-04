@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Api_Address from '../../../env';
 import { toast } from 'react-toastify';
+import i18n from "i18next";
 
 const BlogRead = () => {
 
     const { blogId } = useParams()
+    const lang = i18n.language;
 
     const [blog, setBlog] = useState("")
 
@@ -34,8 +36,11 @@ const BlogRead = () => {
                     <div className='col-xl-6 col-lg-6 col-md-6 col-12 mt-5'>
                         <div className='card border-0 rounded-0' style={{ backgroundColor: "transparent", boxShadow: "none" }}>
                             <div className='card-body'>
-                                <div className='card-text h2 mb-3'>{blog.title}</div>
-                                <p dangerouslySetInnerHTML={{ __html: blog.description }}></p>
+                                <div className='card-text h2 mb-3'>{lang === "tm" ? blog.title : lang === "en" ? blog.title_en : lang === "ru" ? blog.title_ru : ""}</div>
+                                <p dangerouslySetInnerHTML={{
+                                    __html:
+                                        lang === "tm" ? blog.description : lang === "en" ? blog.description_en : lang === "ru" ? blog.description_ru : ""
+                                }}></p>
                             </div>
                         </div>
                     </div>

@@ -16,10 +16,12 @@ import icon_4 from '../../../assets/icons/e-gov-tm.svg'
 import moment from "moment";
 import ScrollButton from "../../../components/scroll/ScrollButton";
 import { useTranslation } from "react-i18next";
+import i18n from "i18next";
 
 const Home = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     //CONTACT
     const [contact, setContact] = useState({
@@ -194,11 +196,16 @@ const Home = () => {
                                     <img src={'https://tmcell.tm/api/api/compress/news/' + news.news_img} alt={news.title_tm} className="img-fluid rounded-4" style={{ height: "230px", objectFit: "cover" }} />
                                     <div className="card-body px-0">
                                         <span className="small me-4">{moment(news.createdAt).format('LL')}</span>
-                                        <span className="bg-light py-1 px-2 rounded-3 fs-13 shadow-sm fw-black">{news.category.name_tm}</span>
+                                        <span className="bg-light py-1 px-2 rounded-3 fs-13 shadow-sm fw-black">
+                                            {lang === "tm" ? news.category.name_tm : lang === "en" ? news.category.name_en : lang === "ru" ? news.category.name_ru : ""}
+                                        </span>
                                         <div className="my-3 h5">
-                                            {news.title_tm}
+                                            {lang === "tm" ? news.title_tm : lang === "en" ? news.title_en : lang === "ru" ? news.title_ru : ""}
                                         </div>
-                                        <p className='text-secondary fs-15' style={{ lineHeight: "30px" }} dangerouslySetInnerHTML={{ __html: news.description_tm.substring(0, 150) + "..." }}></p>
+                                        <p className='text-secondary fs-15' style={{ lineHeight: "30px" }} dangerouslySetInnerHTML={{
+                                            __html:
+                                                lang === "tm" ? news.description_tm.substring(0, 150) + "..." : lang === "en" ? news.description_en.substring(0, 150) + "..." : lang === "ru" ? news.description_ru.substring(0, 150) + "..." : ""
+                                        }}></p>
                                     </div>
                                 </Link>
                             </div>

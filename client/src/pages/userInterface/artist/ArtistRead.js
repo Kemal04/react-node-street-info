@@ -11,16 +11,16 @@ const ArtistRead = () => {
     const { artistId } = useParams()
 
     const [artist, setArtist] = useState("")
-    
+
     useEffect(() => {
         axios.get(`${Api_Address}/api/v1/artist/${artistId}`).then((res) => {
             setArtist(res.data.artist)
         }).catch((res) => {
             toast.error(res.response.data.error)
         })
-        
+
     }, [artistId])
-    
+
     return (
         <div className='bg-light'>
             <div className='container py-5'>
