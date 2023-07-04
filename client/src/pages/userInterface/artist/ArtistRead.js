@@ -3,22 +3,24 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Api_Address from '../../../env';
 import { toast } from 'react-toastify';
+import i18n from "i18next";
 
 const ArtistRead = () => {
+    const lang = i18n.language;
 
     const { artistId } = useParams()
 
     const [artist, setArtist] = useState("")
-
+    
     useEffect(() => {
         axios.get(`${Api_Address}/api/v1/artist/${artistId}`).then((res) => {
             setArtist(res.data.artist)
         }).catch((res) => {
             toast.error(res.response.data.error)
         })
-
+        
     }, [artistId])
-
+    
     return (
         <div className='bg-light'>
             <div className='container py-5'>
@@ -34,8 +36,8 @@ const ArtistRead = () => {
                     <div className='col-xl-6 col-lg-6 col-md-6 col-12 mt-5'>
                         <div className='card border-0 rounded-0' style={{ backgroundColor: "transparent", boxShadow: "none" }}>
                             <div className='card-body'>
-                                <div className='card-text h2 mb-3'>{artist.title}</div>
-                                <p dangerouslySetInnerHTML={{ __html: artist.description }}></p>
+                                <div className='card-text h2 mb-3'>{lang === "tm" ? artist.title : lang === "en" ? artist.title_en : lang === "ru" ? artist.title_ru : ""}</div>
+                                <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? artist.description : lang === "en" ? artist.description_en : lang === "ru" ? artist.description_ru : "" }}></p>
                             </div>
                         </div>
                     </div>

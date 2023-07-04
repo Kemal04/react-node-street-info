@@ -14,11 +14,17 @@ const AdminHistoricalEdit = () => {
 
     const [historical, setHistorical] = useState({
         title: "",
+        title_en: "",
+        title_ru: "",
         description: "",
+        description_en: "",
+        description_ru: "",
     })
     const [img, setImg] = useState('')
     const [qr, setQr] = useState('')
     const [description, setDescription] = useState()
+    const [descriptionEn, setDescriptionEn] = useState()
+    const [descriptionRu, setDescriptionRu] = useState()
     const [prevImg, setPrevImg] = useState(null)
     const [prevQr, setPrevQr] = useState(null)
 
@@ -70,14 +76,30 @@ const AdminHistoricalEdit = () => {
         else if (!historical.title) {
             toast.error("Adyny ýazyň")
         }
+        else if (!historical.title_en) {
+            toast.error("Adyny (EN) ýazyň")
+        }
+        else if (!historical.title_ru) {
+            toast.error("Adyny (RU) ýazyň")
+        }
         else if (!description) {
             toast.error("Mazmuny ýazyň")
+        }
+        else if (!descriptionEn) {
+            toast.error("Mazmuny (EN) ýazyň")
+        }
+        else if (!descriptionRu) {
+            toast.error("Mazmuny (RU) ýazyň")
         }
         else {
 
             const formData = new FormData()
             formData.append('title', historical.title)
+            formData.append('title_en', historical.title_en)
+            formData.append('title_ru', historical.title_ru)
             formData.append('description', description)
+            formData.append('description_en', descriptionEn)
+            formData.append('description_ru', descriptionRu)
             formData.append('individ_img', img.pictureAsFile === undefined ? img : img.pictureAsFile)
             formData.append('individ_qr', qr.qrAsFile === undefined ? qr : qr.qrAsFile)
 
@@ -141,6 +163,16 @@ const AdminHistoricalEdit = () => {
                                     <input name='title' value={historical.title} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
                                 </div>
 
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (EN)</label>
+                                    <input name='title_en' value={historical.title_en} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (RU)</label>
+                                    <input name='title_ru' value={historical.title_ru} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
                                 <div className='col-xl-12 mb-3'>
                                     <label className="form-label fw-bold">Beyany</label>
                                     <CKEditor
@@ -149,6 +181,30 @@ const AdminHistoricalEdit = () => {
                                         onChange={(event, editor) => {
                                             const data = editor.getData();
                                             setDescription(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (EN)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={historical.description_en}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionEn(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (RU)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={historical.description_ru}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionRu(data)
                                         }}
                                     />
                                 </div>

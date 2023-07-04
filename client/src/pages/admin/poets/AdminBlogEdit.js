@@ -12,13 +12,19 @@ const AdminBlogEdit = () => {
     const navigate = useNavigate()
     const { blogId } = useParams()
 
-    const [blog, setBlog] = useState({
+    const [poet, setPoet] = useState({
         title: "",
+        title_en: "",
+        title_ru: "",
         description: "",
+        description_en: "",
+        description_ru: "",
     })
     const [img, setImg] = useState('')
     const [qr, setQr] = useState('')
     const [description, setDescription] = useState()
+    const [descriptionEn, setDescriptionEn] = useState()
+    const [descriptionRu, setDescriptionRu] = useState()
     const [prevImg, setPrevImg] = useState(null)
     const [prevQr, setPrevQr] = useState(null)
 
@@ -39,7 +45,7 @@ const AdminBlogEdit = () => {
     }
 
     const handleChange = (e) => {
-        setBlog((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+        setPoet((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
     useEffect(() => {
@@ -48,7 +54,7 @@ const AdminBlogEdit = () => {
                 accessToken: localStorage.getItem("accessToken"),
             },
         }).then((res) => {
-            setBlog(res.data.blog)
+            setPoet(res.data.blog)
             setImg(res.data.blog.blog_img)
             setQr(res.data.blog.blog_qr)
         }).catch((res) => {
@@ -67,16 +73,32 @@ const AdminBlogEdit = () => {
         else if (!qr) {
             toast.error("QR ýerleşdiriň")
         }
-        else if (!blog.title) {
+        else if (!poet.title) {
             toast.error("Adyny ýazyň")
+        }
+        else if (!poet.title_en) {
+            toast.error("Adyny (EN) ýazyň")
+        }
+        else if (!poet.title_ru) {
+            toast.error("Adyny (RU) ýazyň")
         }
         else if (!description) {
             toast.error("Mazmuny ýazyň")
         }
+        else if (!descriptionEn) {
+            toast.error("Mazmuny (EN) ýazyň")
+        }
+        else if (!descriptionRu) {
+            toast.error("Mazmuny (RU) ýazyň")
+        }
         else {
             const formData = new FormData()
-            formData.append('title', blog.title)
+            formData.append('title', poet.title)
+            formData.append('title_en', poet.title_en)
+            formData.append('title_ru', poet.title_ru)
             formData.append('description', description)
+            formData.append('description_en', descriptionEn)
+            formData.append('description_ru', descriptionRu)
             formData.append('blog_img', img.pictureAsFile === undefined ? img : img.pictureAsFile)
             formData.append('blog_qr', qr.qrAsFile === undefined ? qr : qr.qrAsFile)
 
@@ -139,17 +161,51 @@ const AdminBlogEdit = () => {
 
                                 <div className="col-lg-12 mb-3">
                                     <label className="form-label fw-bold">Ady</label>
-                                    <input name='title' value={blog.title} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                    <input name='title' value={poet.title} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (EN)</label>
+                                    <input name='title_en' value={poet.title_en} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (RU)</label>
+                                    <input name='title_ru' value={poet.title_ru} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
                                 </div>
 
                                 <div className='col-xl-12 mb-3'>
                                     <label className="form-label fw-bold">Beyany</label>
                                     <CKEditor
                                         editor={ClassicEditor}
-                                        data={blog.description}
+                                        data={poet.description}
                                         onChange={(event, editor) => {
                                             const data = editor.getData();
                                             setDescription(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (EN)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={poet.description_en}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionEn(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (RU)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={poet.description_ru}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionRu(data)
                                         }}
                                     />
                                 </div>

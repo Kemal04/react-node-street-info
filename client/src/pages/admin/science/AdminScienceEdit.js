@@ -14,11 +14,17 @@ const AdminScienceEdit = () => {
 
     const [science, setScience] = useState({
         title: "",
+        title_en: "",
+        title_ru: "",
         description: "",
+        description_en: "",
+        description_ru: "",
     })
     const [img, setImg] = useState('')
     const [qr, setQr] = useState('')
     const [description, setDescription] = useState()
+    const [descriptionEn, setDescriptionEn] = useState()
+    const [descriptionRu, setDescriptionRu] = useState()
     const [prevImg, setPrevImg] = useState(null)
     const [prevQr, setPrevQr] = useState(null)
 
@@ -60,8 +66,6 @@ const AdminScienceEdit = () => {
     const handleClick = async (e) => {
         e.preventDefault()
 
-
-
         if (!img) {
             toast.error("Surat ýerleşdiriň")
         }
@@ -71,14 +75,30 @@ const AdminScienceEdit = () => {
         else if (!science.title) {
             toast.error("Adyny ýazyň")
         }
+        else if (!science.title_en) {
+            toast.error("Adyny (EN) ýazyň")
+        }
+        else if (!science.title_ru) {
+            toast.error("Adyny (RU) ýazyň")
+        }
         else if (!description) {
             toast.error("Mazmuny ýazyň")
+        }
+        else if (!descriptionEn) {
+            toast.error("Mazmuny (EN) ýazyň")
+        }
+        else if (!descriptionRu) {
+            toast.error("Mazmuny (RU) ýazyň")
         }
         else {
 
             const formData = new FormData()
             formData.append('title', science.title)
+            formData.append('title_en', science.title_en)
+            formData.append('title_ru', science.title_ru)
             formData.append('description', description)
+            formData.append('description_en', descriptionEn)
+            formData.append('description_ru', descriptionRu)
             formData.append('staff_img', img.pictureAsFile === undefined ? img : img.pictureAsFile)
             formData.append('staff_qr', qr.pictureAsFile === undefined ? qr : qr.pictureAsFile)
 
@@ -143,6 +163,16 @@ const AdminScienceEdit = () => {
                                     <input name='title' value={science.title} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
                                 </div>
 
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (EN)</label>
+                                    <input name='title_en' value={science.title_en} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (RU)</label>
+                                    <input name='title_ru' value={science.title_ru} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
                                 <div className='col-xl-12 mb-3'>
                                     <label className="form-label fw-bold">Beyany</label>
                                     <CKEditor
@@ -151,6 +181,30 @@ const AdminScienceEdit = () => {
                                         onChange={(event, editor) => {
                                             const data = editor.getData();
                                             setDescription(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (EN)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={science.description_en}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionEn(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (RU)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={science.description_ru}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionRu(data)
                                         }}
                                     />
                                 </div>

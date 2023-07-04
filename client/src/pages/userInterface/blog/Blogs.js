@@ -6,10 +6,12 @@ import ReactPaginate from 'react-paginate';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import FetchData from '../../../hooks/FetchData';
+import i18n from "i18next";
 
 const Blogs = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     const [page, setPage] = useState(1)
 
@@ -22,8 +24,6 @@ const Blogs = () => {
     if (error) {
         toast.error(error.message);
     }
-
-    console.log(blogs);
 
     return (
         <div className='bg-light'>
@@ -56,8 +56,8 @@ const Blogs = () => {
                                                     </div>
                                                     <div className="col-md-8 col-8">
                                                         <div className="card-body">
-                                                            <h5 className="card-title">{blog.title}</h5>
-                                                            <p className="card-text" dangerouslySetInnerHTML={{ __html: blog.description.substring(0, 70) + "..." }}></p>
+                                                            <h5 className="card-title">{lang === "tm" ? blog.title : lang === "en" ? blog.title_en : lang === "ru" ? blog.title_ru : ""}</h5>
+                                                            <p className="card-text" dangerouslySetInnerHTML={{ __html: lang === "tm" ? blog.description.substring(0, 70) + "..." : lang === "en" ? blog.description_en.substring(0, 70) + "..." : lang === "ru" ? blog.description_ru.substring(0, 70) + "..." : "" }}></p>
                                                         </div>
                                                     </div>
                                                 </div>

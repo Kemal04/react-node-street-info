@@ -5,10 +5,12 @@ import ReactPaginate from 'react-paginate';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import FetchData from '../../../hooks/FetchData';
+import i18n from "i18next";
 
 const Streets = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     const [page, setPage] = useState(1)
 
@@ -45,8 +47,8 @@ const Streets = () => {
                                             <img src={`${Api_Address}/img/street/${street.street_img}`} alt="surat" className='img-fluid px-3' style={{ width: "300px", height: "300px", objectFit: "contain" }} />
                                         </div>
                                         <div className='card-body'>
-                                            <div className='card-text mb-3 h4'>{street.title}</div>
-                                            <p dangerouslySetInnerHTML={{ __html: street.description.substring(0, 70) + "..." }}></p>
+                                            <div className='card-text mb-3 h4'>{lang === "tm" ? street.title : lang === "en" ? street.title_en : lang === "ru" ? street.title_ru : ""}</div>
+                                            <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? street.description.substring(0, 70) + "..." : lang === "en" ? street.description_en.substring(0, 70) + "..." : lang === "ru" ? street.description_ru.substring(0, 70) + "..." : "" }}></p>
                                         </div>
                                     </div>
                                 </Link>
@@ -71,8 +73,8 @@ const Streets = () => {
                                             </div>
                                             <div className="col-md-8 col-8">
                                                 <div className="card-body">
-                                                    <h5 className="card-title">{street.title}</h5>
-                                                    <p className="card-text" dangerouslySetInnerHTML={{ __html: street.description.substring(0, 70) + "..." }}></p>
+                                                    <h5 className="card-title">{lang === "tm" ? street.title : lang === "en" ? street.title_en : lang === "ru" ? street.title_ru : ""}</h5>
+                                                    <p className="card-text" dangerouslySetInnerHTML={{ __html: lang === "tm" ? street.description.substring(0, 70) + "..." : lang === "en" ? street.description_en.substring(0, 70) + "..." : lang === "ru" ? street.description_ru.substring(0, 70) + "..." : "" }}></p>
                                                 </div>
                                             </div>
                                         </div>

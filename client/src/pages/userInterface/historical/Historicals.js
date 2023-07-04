@@ -5,10 +5,12 @@ import ReactPaginate from 'react-paginate';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import FetchData from '../../../hooks/FetchData';
+import i18n from "i18next";
 
 const Historicals = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     const [page, setPage] = useState(1)
 
@@ -45,8 +47,8 @@ const Historicals = () => {
                                             <img src={`${Api_Address}/img/individ/${individ.individ_img}`} alt="surat" className='img-fluid px-3' />
                                         </div>
                                         <div className='card-body'>
-                                            <div className='card-text mb-3 h4'>{individ.title}</div>
-                                            <p dangerouslySetInnerHTML={{ __html: individ.description.substring(0, 70) + "..." }}></p>
+                                            <div className='card-text mb-3 h4'>{lang === "tm" ? individ.title : lang === "en" ? individ.title_en : lang === "ru" ? individ.title_ru : ""}</div>
+                                            <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? individ.description.substring(0, 70) + "..." : lang === "en" ? individ.description_en.substring(0, 70) + "..." : lang === "ru" ? individ.description_ru.substring(0, 70) + "..." : "" }}></p>
                                         </div>
                                     </div>
                                 </Link>
@@ -70,8 +72,8 @@ const Historicals = () => {
                                             </div>
                                             <div className="col-md-8 col-8">
                                                 <div className='card-body'>
-                                                    <div className='card-text mb-3 h4'>{individ.title}</div>
-                                                    <p dangerouslySetInnerHTML={{ __html: individ.description.substring(0, 70) + "..." }}></p>
+                                                    <div className='card-text mb-3 h4'>{lang === "tm" ? individ.title : lang === "en" ? individ.title_en : lang === "ru" ? individ.title_ru : ""}</div>
+                                                    <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? individ.description.substring(0, 70) + "..." : lang === "en" ? individ.description_en.substring(0, 70) + "..." : lang === "ru" ? individ.description_ru.substring(0, 70) + "..." : "" }}></p>
                                                 </div>
                                             </div>
                                         </div>

@@ -5,10 +5,12 @@ import ReactPaginate from 'react-paginate';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import FetchData from '../../../hooks/FetchData';
+import i18n from "i18next";
 
 const Buildings = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     const [page, setPage] = useState(1)
 
@@ -46,9 +48,9 @@ const Buildings = () => {
                                             <img src={`${Api_Address}/img/building/${building.building_img}`} alt="surat" className='img-fluid px-3' />
                                         </div>
                                         <div className='card-body'>
-                                            <div className='card-text mb-3 h4'>{building.name}</div>
-                                            <div className='card-text h5 mb-3 fst-italic text-secondary'>{building.title}</div>
-                                            <p dangerouslySetInnerHTML={{ __html: building.description.substring(0, 70) + "..." }}></p>
+                                            <div className='card-text mb-3 h4'>{lang === "tm" ? building.name : lang === "en" ? building.name_en : lang === "ru" ? building.name_ru : ""}</div>
+                                            <div className='card-text h5 mb-3 fst-italic text-secondary'>{lang === "tm" ? building.title : lang === "en" ? building.title_en : lang === "ru" ? building.title_ru : ""}</div>
+                                            <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? building.description.substring(0, 70) + "..." : lang === "en" ? building.description_en.substring(0, 70) + "..." : lang === "ru" ? building.description_ru.substring(0, 70) + "..." : "" }}></p>
                                         </div>
                                     </div>
                                 </Link>
@@ -72,9 +74,9 @@ const Buildings = () => {
                                             </div>
                                             <div className='col-md-8 col-8'>
                                                 <div className='card-body'>
-                                                    <div className='card-text mb-3 h4'>{building.name}</div>
-                                                    <div className='card-text h5 mb-3 fst-italic text-secondary'>{building.title}</div>
-                                                    <p dangerouslySetInnerHTML={{ __html: building.description.substring(0, 70) + "..." }}></p>
+                                                    <div className='card-text mb-3 h4'>{lang === "tm" ? building.name : lang === "en" ? building.name_en : lang === "ru" ? building.name_ru : ""}</div>
+                                                    <div className='card-text h5 mb-3 fst-italic text-secondary'>{lang === "tm" ? building.title : lang === "en" ? building.title_en : lang === "ru" ? building.title_ru : ""}</div>
+                                                    <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? building.description.substring(0, 70) + "..." : lang === "en" ? building.description_en.substring(0, 70) + "..." : lang === "ru" ? building.description_ru.substring(0, 70) + "..." : "" }}></p>
                                                 </div>
                                             </div>
                                         </div>

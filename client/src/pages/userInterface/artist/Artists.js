@@ -5,10 +5,12 @@ import ReactPaginate from 'react-paginate';
 import { useTranslation } from 'react-i18next';
 import FetchData from '../../../hooks/FetchData';
 import { toast } from 'react-toastify';
+import i18n from "i18next";
 
 const Artists = () => {
 
     const { t } = useTranslation();
+    const lang = i18n.language;
 
     const [page, setPage] = useState(1)
 
@@ -45,8 +47,8 @@ const Artists = () => {
                                             <img src={`${Api_Address}/img/artist/${artist.artist_img}`} alt="surat" className='img-fluid px-3' />
                                         </div>
                                         <div className='card-body'>
-                                            <div className='card-text mb-3 h4'>{artist.title}</div>
-                                            <p dangerouslySetInnerHTML={{ __html: artist.description.substring(0, 70) + "..." }}></p>
+                                            <div className='card-text mb-3 h4'>{lang === "tm" ? artist.title : lang === "en" ? artist.title_en : lang === "ru" ? artist.title_ru : ""}</div>
+                                            <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? artist.description.substring(0, 70) + "..." : lang === "en" ? artist.description_en.substring(0, 70) + "..." : lang === "ru" ? artist.description_ru.substring(0, 70) + "..." : "" }}></p>
                                         </div>
                                     </div>
                                 </Link>
@@ -70,8 +72,8 @@ const Artists = () => {
                                             </div>
                                             <div className="col-md-8 col-8">
                                                 <div className='card-body'>
-                                                    <div className='card-text mb-3 h4'>{artist.title}</div>
-                                                    <p dangerouslySetInnerHTML={{ __html: artist.description.substring(0, 70) + "..." }}></p>
+                                                    <div className='card-text mb-3 h4'>{lang === "tm" ? artist.title : lang === "en" ? artist.title_en : lang === "ru" ? artist.title_ru : ""}</div>
+                                                    <p dangerouslySetInnerHTML={{ __html: lang === "tm" ? artist.description.substring(0, 70) + "..." : lang === "en" ? artist.description_en.substring(0, 70) + "..." : lang === "ru" ? artist.description_ru.substring(0, 70) + "..." : "" }}></p>
                                                 </div>
                                             </div>
                                         </div>

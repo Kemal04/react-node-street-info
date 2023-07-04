@@ -14,11 +14,17 @@ const AdminArtistEdit = () => {
 
     const [artist, setArtist] = useState({
         title: "",
+        title_en: "",
+        title_ru: "",
         description: "",
+        description_en: "",
+        description_ru: "",
     })
     const [img, setImg] = useState('')
     const [qr, setQr] = useState('')
     const [description, setDescription] = useState()
+    const [descriptionEn, setDescriptionEn] = useState()
+    const [descriptionRu, setDescriptionRu] = useState()
     const [prevImg, setPrevImg] = useState(null)
     const [prevQr, setPrevQr] = useState(null)
 
@@ -69,14 +75,30 @@ const AdminArtistEdit = () => {
         else if (!artist.title) {
             toast.error("Adyny ýazyň")
         }
+        else if (!artist.title_en) {
+            toast.error("Adyny (EN) ýazyň")
+        }
+        else if (!artist.title_ru) {
+            toast.error("Adyny (RU) ýazyň")
+        }
         else if (!description) {
             toast.error("Mazmuny ýazyň")
+        }
+        else if (!descriptionEn) {
+            toast.error("Mazmuny (EN) ýazyň")
+        }
+        else if (!descriptionRu) {
+            toast.error("Mazmuny (RU) ýazyň")
         }
         else {
 
             const formData = new FormData()
             formData.append('title', artist.title)
+            formData.append('title_en', artist.title_en)
+            formData.append('title_ru', artist.title_ru)
             formData.append('description', description)
+            formData.append('description_en', descriptionEn)
+            formData.append('description_ru', descriptionRu)
             formData.append('artist_img', img.pictureAsFile === undefined ? img : img.pictureAsFile)
             formData.append('artist_qr', qr.pictureAsFile === undefined ? qr : qr.pictureAsFile)
 
@@ -142,6 +164,16 @@ const AdminArtistEdit = () => {
                                     <input name='title' value={artist.title} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
                                 </div>
 
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (EN)</label>
+                                    <input name='title_en' value={artist.title_en} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
+                                <div className="col-lg-12 mb-3">
+                                    <label className="form-label fw-bold">Ady (RU)</label>
+                                    <input name='title_ru' value={artist.title_ru} onChange={handleChange} type="text" className="form-control rounded-0" autoComplete="off" />
+                                </div>
+
                                 <div className='col-xl-12 mb-3'>
                                     <label className="form-label fw-bold">Beyany</label>
                                     <CKEditor
@@ -150,6 +182,30 @@ const AdminArtistEdit = () => {
                                         onChange={(event, editor) => {
                                             const data = editor.getData();
                                             setDescription(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (EN)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={artist.description_en}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionEn(data)
+                                        }}
+                                    />
+                                </div>
+
+                                <div className='col-xl-12 mb-3'>
+                                    <label className="form-label fw-bold">Beyany (RU)</label>
+                                    <CKEditor
+                                        editor={ClassicEditor}
+                                        data={artist.description_ru}
+                                        onChange={(event, editor) => {
+                                            const data = editor.getData();
+                                            setDescriptionRu(data)
                                         }}
                                     />
                                 </div>
