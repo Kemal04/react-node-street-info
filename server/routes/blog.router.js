@@ -41,10 +41,10 @@ router.post("/create", isAdmin, fileUpload.upload, async (req, res) => {
     await Blog.create({
         title: req.body.title,
         description: req.body.description,
-        title_en: req.body.title,
-        description_en: req.body.description,
-        title_ru: req.body.title,
-        description_ru: req.body.description,
+        title_en: req.body.title_en,
+        description_en: req.body.description_en,
+        title_ru: req.body.title_ru,
+        description_ru: req.body.description_ru,
         blog_img: req.files.blog_img[0].filename
     }).then(() => {
         res.json({
@@ -80,10 +80,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
-            title_en: req.body.title,
-            description_en: req.body.description,
-            title_ru: req.body.title,
-            description_ru: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             blog_img: img,
             blog_qr: qr
         },
@@ -103,10 +103,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
-            title_en: req.body.title,
-            description_en: req.body.description,
-            title_ru: req.body.title,
-            description_ru: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             blog_img: img
         },
             { where: { id: req.params.blogId } })
@@ -124,10 +124,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
-            title_en: req.body.title,
-            description_en: req.body.description,
-            title_ru: req.body.title,
-            description_ru: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
             blog_qr: qr
         },
             { where: { id: req.params.blogId } })
@@ -140,10 +140,10 @@ router.post("/edit/:blogId", isAdmin, fileUpload.upload, async (req, res) => {
         await Blog.update({
             title: req.body.title,
             description: req.body.description,
-            title_en: req.body.title,
-            description_en: req.body.description,
-            title_ru: req.body.title,
-            description_ru: req.body.description,
+            title_en: req.body.title_en,
+            description_en: req.body.description_en,
+            title_ru: req.body.title_ru,
+            description_ru: req.body.description_ru,
         },
             { where: { id: req.params.blogId } })
             .then(() => {
